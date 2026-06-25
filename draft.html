@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Draft Picker — Logo Selection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0d0f;--card:#1c1c21;--line:#2a2a31;--text:#f4f4f5;
+    --muted:#9a9aa3;--pick:#34d399;--pickbg:rgba(52,211,153,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+
+  header{padding:56px 0 28px;text-align:center;border-bottom:1px solid var(--line)}
+  header h1{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+  header p{color:var(--muted);font-size:16px;font-weight:400}
+
+  .bar{position:sticky;top:0;z-index:20;background:rgba(13,13,15,.92);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+    padding:14px 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between}
+  .bar .count{font-size:15px;font-weight:600}
+  .bar .count b{color:var(--pick)}
+  .bar .btns{display:flex;gap:10px;flex-wrap:wrap}
+  button{font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;
+    border:1px solid var(--line);background:var(--card);color:var(--text);
+    padding:9px 16px;border-radius:9px;transition:.2s}
+  button:hover{border-color:#3a3a44}
+  button.primary{background:var(--pick);color:#08120c;border-color:var(--pick)}
+
+  section{padding:40px 0 8px}
+  .sec-title{font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--muted);font-weight:700;margin-bottom:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+
+  .card{background:var(--card);border:2px solid var(--line);border-radius:14px;
+    overflow:hidden;cursor:pointer;transition:transform .25s,border-color .25s;position:relative}
+  .card:hover{transform:translateY(-4px)}
+  .card.sel{border-color:var(--pick);background:var(--pickbg)}
+  .card .imgwrap{aspect-ratio:1/1;background:#16161a;overflow:hidden}
+  .card .imgwrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .card:hover .imgwrap img{transform:scale(1.05)}
+  .card .body{padding:14px 16px}
+  .card .body h3{font-size:16px;font-weight:700}
+  .card .body .sub{color:var(--muted);font-size:12.5px;margin-top:2px}
+  .check{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;
+    background:rgba(0,0,0,.5);border:2px solid rgba(255,255,255,.4);
+    display:flex;align-items:center;justify-content:center;font-size:15px;
+    color:transparent;transition:.2s;backdrop-filter:blur(4px)}
+  .card.sel .check{background:var(--pick);border-color:var(--pick);color:#08120c}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(8,8,10,.94);display:none;
+    align-items:center;justify-content:center;z-index:99;padding:40px;cursor:zoom-out;backdrop-filter:blur(6px)}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:90vh;border-radius:12px}
+
+  /* output panel */
+  .panel{position:fixed;inset:0;background:rgba(8,8,10,.9);display:none;
+    align-items:center;justify-content:center;z-index:120;padding:24px;backdrop-filter:blur(6px)}
+  .panel.open{display:flex}
+  .panel .box{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    max-width:560px;width:100%;padding:28px}
+  .panel h2{font-size:22px;font-weight:800;margin-bottom:6px}
+  .panel .desc{color:var(--muted);font-size:14px;margin-bottom:18px}
+  .panel textarea{width:100%;min-height:200px;background:#101014;border:1px solid var(--line);
+    border-radius:10px;color:var(--text);font-family:ui-monospace,monospace;font-size:13px;
+    padding:14px;resize:vertical;line-height:1.6}
+  .panel .row{display:flex;gap:10px;margin-top:16px;justify-content:flex-end}
+
+  footer{padding:50px 0 80px;text-align:center;color:var(--muted);font-size:13px}
+  @media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Draft Picker</h1>
+    <p>Click chọn logo ưng ý · click ảnh phóng to · xong bấm "Xuất lựa chọn"</p>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="wrap" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between;width:100%">
+    <div class="count">Đã chọn: <b id="cnt">0</b> / <span id="total">0</span></div>
+    <div class="btns">
+      <button onclick="selAll()">Chọn hết</button>
+      <button onclick="clearAll()">Bỏ hết</button>
+      <button class="primary" onclick="exportSel()">Xuất lựa chọn</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="app"></main>
+
+<footer>Draft Picker · Logofolio 2026</footer>
+
+<div class="lb" id="lb"><img src="" alt=""></div>
+
+<div class="panel" id="panel">
+  <div class="box">
+    <h2>Logo a đã chọn</h2>
+    <div class="desc">Copy list này gửi lại cho em, em sẽ đẩy sâu (case-study / mockup) những cái này.</div>
+    <textarea id="out" readonly></textarea>
+    <div class="row">
+      <button onclick="closePanel()">Đóng</button>
+      <button class="primary" onclick="copyOut()">Copy</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = [
+  {g:"Eyewear", items:[
+    {f:"veo",n:"Veo",s:"Optical clinic"},
+    {f:"solene",n:"Solène",s:"Designer sunglasses"},
+    {f:"luma",n:"Lúma",s:"Contact lens"},
+    {f:"owlie",n:"Owlie",s:"Kids eyewear"},
+    {f:"optihaus",n:"OptiHaus",s:"Eyewear retail"},
+  ]},
+  {g:"Food & Beverage", items:[
+    {f:"olive-oak",n:"Olive & Oak",s:"Upscale restaurant"},
+    {f:"bru",n:"Bru",s:"Specialty coffee"},
+    {f:"kanopi",n:"Kanopi",s:"Coffee roastery"},
+    {f:"levain",n:"Levain",s:"Artisan bakery"},
+    {f:"verde",n:"Verde",s:"Juice / plant-based"},
+    {f:"banh-co",n:"Bánh & Co",s:"Vietnamese fusion"},
+  ]},
+  {g:"Construction", items:[
+    {f:"ironclad",n:"Ironclad",s:"Construction"},
+    {f:"buildcore",n:"BuildCore",s:"Construction & engineering"},
+  ]},
+  {g:"Finance", items:[
+    {f:"meridian",n:"Meridian Capital",s:"Investment firm"},
+    {f:"vault",n:"Vault",s:"Modern fintech"},
+  ]},
+  {g:"Environment", items:[
+    {f:"verdant",n:"Verdant",s:"Environmental protection"},
+    {f:"terraguard",n:"TerraGuard",s:"Conservation foundation"},
+  ]},
+];
+
+const sel = new Set();
+const app = document.getElementById('app');
+let total = 0;
+
+DATA.forEach(group=>{
+  const sec=document.createElement('section');
+  const title=document.createElement('div');
+  title.className='sec-title';title.textContent=group.g;
+  sec.appendChild(title);
+  const grid=document.createElement('div');grid.className='grid';
+  group.items.forEach(it=>{
+    total++;
+    const card=document.createElement('article');
+    card.className='card';card.dataset.key=it.n+" — "+it.s;
+    card.innerHTML=`
+      <div class="check">✓</div>
+      <div class="imgwrap"><img src="logos/${it.f}.png" alt="${it.n}"></div>
+      <div class="body"><h3>${it.n}</h3><div class="sub">${it.s}</div></div>`;
+    card.addEventListener('click',()=>{
+      card.classList.toggle('sel');
+      const k=card.dataset.key;
+      card.classList.contains('sel')?sel.add(k):sel.delete(k);
+      updateCnt();
+    });
+    card.querySelector('img').addEventListener('click',e=>{
+      e.stopPropagation();
+      lbImg.src=e.target.src;lb.classList.add('open');
+    });
+    grid.appendChild(card);
+  });
+  sec.appendChild(grid);app.appendChild(sec);
+});
+document.getElementById('total').textContent=total;
+
+function updateCnt(){document.getElementById('cnt').textContent=sel.size}
+function selAll(){document.querySelectorAll('.card').forEach(c=>{c.classList.add('sel');sel.add(c.dataset.key)});updateCnt()}
+function clearAll(){document.querySelectorAll('.card').forEach(c=>c.classList.remove('sel'));sel.clear();updateCnt()}
+
+const lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+lb.addEventListener('click',()=>lb.classList.remove('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){lb.classList.remove('open');closePanel()}});
+
+const panel=document.getElementById('panel'),out=document.getElementById('out');
+function exportSel(){
+  if(sel.size===0){alert('Chưa chọn cái nào a ơi');return}
+  out.value=[...sel].map((x,i)=>(i+1)+". "+x).join("\n");
+  panel.classList.add('open');
+}
+function closePanel(){panel.classList.remove('open')}
+function copyOut(){out.select();document.execCommand('copy');
+  const b=event.target;const t=b.textContent;b.textContent='Đã copy ✓';setTimeout(()=>b.textContent=t,1500)}
+</script>
+</body>
+</html>
