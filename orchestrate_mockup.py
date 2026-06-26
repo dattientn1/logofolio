@@ -43,10 +43,13 @@ BRANDS=[
    ["an eco organization tote bag in nature","a branded sustainability report cover mockup"]),
 ]
 
+LOGODIR="/home/apple/Apple/portfolio/deck/logos"
+
 def prompt(name,concept,color,mk):
-    return (f"Professional brand mockup: {mk}, featuring the logo of '{name}', a {concept} brand. "
-            f"Color palette: {color}. Realistic product/environment photography mockup, premium presentation, "
-            f"clean composition, soft studio lighting, the brand name '{name}' spelled correctly, "
+    return (f"Professional brand mockup: {mk}. Apply the EXACT logo shown in the reference image "
+            f"onto this mockup, keeping the reference logo's colors, shapes and wordmark identical. "
+            f"This is the brand '{name}', a {concept}. Realistic product/environment photography mockup, "
+            f"premium presentation, clean composition, soft studio lighting, faithful to the reference logo, "
             f"minimal clutter, NO garbled text, NO paragraph text, high quality, Behance-style mockup.")
 
 TASKS=[]
@@ -63,8 +66,9 @@ def run(t):
         with lock:done[0]+=1
         return f"skip {slug}-m{i}"
     try:
-        p=subprocess.run([GENPY,GEN,"--prompt",pr,"--ar","4:3","--res","2k","--folder",FOLDER],
-                         cwd=CWD,capture_output=True,text=True,timeout=240)
+        ref=f"{LOGODIR}/{slug}.png"
+        p=subprocess.run([GENPY,GEN,"--prompt",pr,"--ref",ref,"--ar","4:3","--res","2k","--folder",FOLDER],
+                         cwd=CWD,capture_output=True,text=True,timeout=300)
         path=next((l.strip() for l in reversed(p.stdout.splitlines()) if l.strip().endswith(".png")),None)
         if path and os.path.exists(path):
             shutil.copy(path,dest)

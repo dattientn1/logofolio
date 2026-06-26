@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Generate deck.html (Daymark-style) for 15 chosen brands. A4 landscape, print-ready."""
-import os
+import os, json
+
+# real palettes extracted from logo pixels
+with open("/home/apple/Apple/portfolio/palettes.json") as f:
+    REAL_PAL = json.load(f)
 
 # slug, name, tagline-sentence (bold name embedded), services, palette(list hex), fonts(head,body), group
 BRANDS = [
@@ -58,8 +62,8 @@ GROUP_COLOR = {"Eyewear":"#2B3A55","Food & Beverage":"#3E4A36","Construction":"#
 def mockups(slug):
     out=[]
     for i in (1,2):
-        if os.path.exists(f"/home/apple/Apple/portfolio/deck/mockups/{slug}-m{i}.png"):
-            out.append(f"mockups/{slug}-m{i}.png")
+        if os.path.exists(f"/home/apple/Apple/portfolio/deck/mockups_web/{slug}-m{i}.jpg"):
+            out.append(f"mockups_web/{slug}-m{i}.jpg")
     return out
 
 def font_link():
@@ -171,10 +175,13 @@ def build():
         page+=1
         for b in gb:
             slug,name,tag,svc,pal,fonts,grp=b
-            logo=f"logos/{slug}.png"
+            logo=f"logos_web/{slug}.jpg"
             mks=mockups(slug)
+            # accent color from real logo palette for the title-card glow
+            _rp=REAL_PAL.get(slug) or pal
+            _accent=max(_rp,key=lambda h:max(int(h[i:i+2],16) for i in (1,3,5))-min(int(h[i:i+2],16) for i in (1,3,5)))
             # title card
-            parts.append(f"""<section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,{pal[1]}33,#0a0d15 62%)">
+            parts.append(f"""<section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,{_accent}40,#0a0d15 62%)">
   <div class="ix">{grp}</div>
   <h2>{tag}</h2>
   <div class="svc">{svc}</div>
@@ -184,29 +191,27 @@ def build():
             page+=1
             # board
             headfont,bodyfont=fonts
-            # palette chips
-            chips="".join(f'<div class="chip" style="background:{c};color:{"#fff" if i<2 else "#222"}">{chip_text(c)}</div>' for i,c in enumerate(pal))
+            # REAL palette extracted from the logo pixels (fallback to manual if missing)
+            rpal=REAL_PAL.get(slug) or pal
+            darkest=min(rpal,key=lambda h:sum(int(h[i:i+2],16) for i in (1,3,5)))
+            def lum(h): return sum(int(h[i:i+2],16) for i in (1,3,5))
+            chips="".join(f'<div class="chip" style="background:{c};color:{"#fff" if lum(c)<360 else "#222"}">{chip_text(c)}</div>' for c in rpal)
             mock_cells=""
             if mks:
                 mock_cells+=f'<div class="cell mock"><img src="{mks[0]}"></div>'
             if len(mks)>1:
                 mock_cells+=f'<div class="cell mock"><img src="{mks[1]}"></div>'
             else:
-                # fallback: typography cell duplicate
-                mock_cells+=f'''<div class="cell"><div class="ct">Application</div>
-                  <div style="flex:1;display:flex;align-items:center;justify-content:center;background:{pal[0]};color:#fff;font-family:'{headfont}';font-size:40px">{name}</div></div>'''
+                # fallback: logo reversed on darkest real color (matches logo, no fake font)
+                mock_cells+=f'''<div class="cell logo-cell" style="background:{darkest}"><div class="ct" style="position:absolute;top:0;left:0;color:rgba(255,255,255,.55)">Logo · Reversed</div><img src="{logo}"></div>'''
             parts.append(f"""<section class="slide board">
   <div class="label">{name}</div>
   <div class="ind">{grp} · Visual Identity</div>
   <div class="grid">
     <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="{logo}"></div>
-    <div class="cell"><div class="ct">Color Palette</div>
+    <div class="cell"><div class="ct">Color Palette · from logo</div>
       <div class="pal-wrap"><div class="pal-row">{chips}</div></div></div>
-    <div class="cell"><div class="ct">Typography</div>
-      <div class="type-wrap"><div class="big" style="font-family:'{headfont}'">{name}</div>
-      <div class="meta">{headfont} · Display &nbsp;/&nbsp; {bodyfont} · Text</div>
-      <div class="ag" style="font-family:'{bodyfont}'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
-    {mock_cells.split('</div>',0)[0] if False else mock_cells if mks else mock_cells}
+    {mock_cells}
   </div>
   <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">{name}</span><span>{page:02d}</span></div>
 </section>""")
