@@ -1,0 +1,413 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<title>Logofolio — Portfolio Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#0c0f17}
+body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;color:#fff}
+.slide{width:1122px;height:793px;position:relative;overflow:hidden;page-break-after:always;background:#0c0f17}
+.slide:last-child{page-break-after:auto}
+.foot{position:absolute;left:48px;right:48px;bottom:26px;display:flex;justify-content:space-between;
+  font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.75);font-weight:500}
+.foot .c{position:absolute;left:50%;transform:translateX(-50%)}
+
+/* cover */
+.cover{background:radial-gradient(ellipse at 70% 10%,#16243f,#0a0d15 60%)}
+.cover .eyebrow{position:absolute;top:48px;left:48px;font-size:13px;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:600}
+.cover .contact{position:absolute;top:48px;right:48px;text-align:right;font-size:12px;
+  line-height:1.7;color:rgba(255,255,255,.7)}
+.cover h1{position:absolute;left:44px;bottom:150px;font-size:150px;font-weight:800;
+  letter-spacing:-.04em;line-height:.9}
+.cover .sub{position:absolute;left:50px;bottom:96px;font-size:18px;color:rgba(255,255,255,.65);font-weight:300;max-width:640px}
+
+/* title card */
+.tcard{display:flex;flex-direction:column;justify-content:flex-start;padding:64px}
+.tcard .ix{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600;margin-bottom:auto}
+.tcard h2{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
+  font-size:48px;line-height:1.14;max-width:620px;margin-bottom:18px}
+.tcard h2 b{font-style:normal;font-weight:700}
+.tcard .svc{font-size:13.5px;letter-spacing:.06em;color:rgba(255,255,255,.7);font-weight:500;margin-bottom:64px;max-width:560px}
+.tcard .logo{position:absolute;right:64px;top:120px;width:300px;height:300px;border-radius:18px;
+  overflow:hidden;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.tcard .logo img{width:100%;height:100%;object-fit:cover}
+
+/* board (system overview, light) */
+.board{background:#f4f3ef;color:#13131a;padding:56px 60px}
+.board .label{font-family:'Playfair Display',serif;font-style:italic;font-size:22px;font-weight:600;margin-bottom:4px}
+.board .ind{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8a8a90;font-weight:600;margin-bottom:28px}
+.board .grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;height:560px}
+.board .cell{background:#fff;border:1px solid #e6e4dd;border-radius:14px;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.board .cell .ct{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9a9a90;font-weight:700;padding:14px 16px 0}
+.cell.logo-cell{align-items:center;justify-content:center;background:#fff}
+.cell.logo-cell img{width:78%;height:78%;object-fit:contain}
+.cell.mock img{width:100%;height:100%;object-fit:cover}
+.cell.palette .sw{display:flex;height:100%;width:100%}
+.cell.palette .sw div{flex:1}
+.pal-wrap{padding:12px 16px 16px;display:flex;flex-direction:column;gap:8px;height:100%}
+.pal-row{display:flex;gap:10px;flex:1}
+.pal-row .chip{flex:1;border-radius:8px;display:flex;align-items:flex-end;padding:8px;font-size:9px;font-weight:600}
+.type-wrap{padding:18px 20px;display:flex;flex-direction:column;justify-content:center;height:100%}
+.type-wrap .big{font-size:46px;line-height:1;margin-bottom:6px}
+.type-wrap .meta{font-size:11px;color:#8a8a90;letter-spacing:.04em;margin-bottom:14px}
+.type-wrap .ag{font-size:13px;color:#444;letter-spacing:.02em}
+
+/* divider */
+.divider{display:flex;flex-direction:column;justify-content:flex-start;padding:64px}
+.divider .ix{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:600;margin-bottom:auto}
+.divider h2{font-size:72px;font-weight:800;letter-spacing:-.02em;line-height:1.04;max-width:760px}
+.divider h2 .lt{font-weight:300;color:rgba(255,255,255,.85)}
+.divider .n{font-size:15px;color:rgba(255,255,255,.7);margin-top:18px;font-weight:300}
+
+/* contact */
+.contact-slide{background:radial-gradient(ellipse at 30% 0%,#16243f,#0a0d15 60%);
+  display:flex;flex-direction:column;justify-content:center;padding:64px}
+.contact-slide h1{font-size:120px;font-weight:800;letter-spacing:-.03em;margin-bottom:10px}
+.contact-slide p{font-size:18px;color:rgba(255,255,255,.7);font-weight:300;max-width:600px;margin-bottom:40px}
+.contact-slide .row{display:flex;gap:60px;font-size:14px;color:rgba(255,255,255,.85)}
+.contact-slide .row b{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:6px;font-weight:600}
+@page{size:1122px 793px;margin:0}@media print{.slide{margin:0}}
+</style></head><body>
+<section class="slide cover">
+  <div class="eyebrow">Logo Portfolio · 2026</div>
+  <div class="contact">selected works<br>15 brand identities</div>
+  <h1>Logofolio</h1>
+  <div class="sub">A curated collection of modern brand identities across eyewear, hospitality, construction, finance &amp; environment.</div>
+  <div class="foot"><span>Logofolio</span><span class="c">brand identity</span><span>01</span></div>
+</section><section class="slide divider" style="background:#2B3A55">
+  <div class="ix">Section · 01</div>
+  <h2>Eyewear.<br><span class="lt">4 brand identities.</span></h2>
+  <div class="n">Selected logo systems and applications.</div>
+  <div class="foot"><span>Logofolio</span><span class="c">eyewear</span><span>02</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#C8A24B33,#0a0d15 62%)">
+  <div class="ix">Eyewear</div>
+  <h2>Crafting <b>Solène</b> into a quiet icon of luxury eyewear.</h2>
+  <div class="svc">Visual Identity · Logo System · Packaging · Retail</div>
+  <div class="logo"><img src="logos/solene.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Solène</span><span>03</span></div>
+</section><section class="slide board">
+  <div class="label">Solène</div>
+  <div class="ind">Eyewear · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/solene.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#0C0C0C;color:#fff">#0C0C0C</div><div class="chip" style="background:#C8A24B;color:#fff">#C8A24B</div><div class="chip" style="background:#E8DFC8;color:#222">#E8DFC8</div><div class="chip" style="background:#F7F4ED;color:#222">#F7F4ED</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Playfair Display'">Solène</div>
+      <div class="meta">Playfair Display · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/solene-m1.png"></div><div class="cell mock"><img src="mockups/solene-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Solène</span><span>04</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#7FB5C933,#0a0d15 62%)">
+  <div class="ix">Eyewear</div>
+  <h2>Giving <b>Lúma</b> a soft, modern voice in vision care.</h2>
+  <div class="svc">Visual Identity · Monogram · Packaging · Product</div>
+  <div class="logo"><img src="logos/luma.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Lúma</span><span>05</span></div>
+</section><section class="slide board">
+  <div class="label">Lúma</div>
+  <div class="ind">Eyewear · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/luma.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#2B3A55;color:#fff">#2B3A55</div><div class="chip" style="background:#7FB5C9;color:#fff">#7FB5C9</div><div class="chip" style="background:#E9D8E4;color:#222">#E9D8E4</div><div class="chip" style="background:#FBF7F9;color:#222">#FBF7F9</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Poppins'">Lúma</div>
+      <div class="meta">Poppins · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/luma-m1.png"></div><div class="cell mock"><img src="mockups/luma-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Lúma</span><span>06</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#F2A93B33,#0a0d15 62%)">
+  <div class="ix">Eyewear</div>
+  <h2>Making <b>Owlie</b> a playful friend for little eyes.</h2>
+  <div class="svc">Visual Identity · Mascot Mark · Packaging · Retail</div>
+  <div class="logo"><img src="logos/owlie.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Owlie</span><span>07</span></div>
+</section><section class="slide board">
+  <div class="label">Owlie</div>
+  <div class="ind">Eyewear · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/owlie.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#E8552D;color:#fff">#E8552D</div><div class="chip" style="background:#F2A93B;color:#fff">#F2A93B</div><div class="chip" style="background:#3AAE9E;color:#222">#3AAE9E</div><div class="chip" style="background:#FFF7EC;color:#222">#FFF7EC</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Poppins'">Owlie</div>
+      <div class="meta">Poppins · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/owlie-m1.png"></div><div class="cell mock"><img src="mockups/owlie-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Owlie</span><span>08</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#44444433,#0a0d15 62%)">
+  <div class="ix">Eyewear</div>
+  <h2>Building <b>OptiHaus</b> into a sleek eyewear destination.</h2>
+  <div class="svc">Visual Identity · Monogram · Signage · Retail</div>
+  <div class="logo"><img src="logos/optihaus.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">OptiHaus</span><span>09</span></div>
+</section><section class="slide board">
+  <div class="label">OptiHaus</div>
+  <div class="ind">Eyewear · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/optihaus.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#111111;color:#fff">#111111</div><div class="chip" style="background:#444444;color:#fff">#444444</div><div class="chip" style="background:#9A9A9A;color:#222">#9A9A9A</div><div class="chip" style="background:#F2F2F2;color:#222">#F2F2F2</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Inter'">OptiHaus</div>
+      <div class="meta">Inter · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/optihaus-m1.png"></div><div class="cell mock"><img src="mockups/optihaus-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">OptiHaus</span><span>10</span></div>
+</section><section class="slide divider" style="background:#3E4A36">
+  <div class="ix">Section · 02</div>
+  <h2>Food & Beverage.<br><span class="lt">6 brand identities.</span></h2>
+  <div class="n">Selected logo systems and applications.</div>
+  <div class="foot"><span>Logofolio</span><span class="c">food & beverage</span><span>11</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#3E4A3633,#0a0d15 62%)">
+  <div class="ix">Food & Beverage</div>
+  <h2>Setting <b>Olive &amp; Oak</b> as a table worth returning to.</h2>
+  <div class="svc">Visual Identity · Logo System · Menu · Stationery</div>
+  <div class="logo"><img src="logos/olive-oak.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Olive & Oak</span><span>12</span></div>
+</section><section class="slide board">
+  <div class="label">Olive & Oak</div>
+  <div class="ind">Food & Beverage · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/olive-oak.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#1C1C18;color:#fff">#1C1C18</div><div class="chip" style="background:#3E4A36;color:#fff">#3E4A36</div><div class="chip" style="background:#A99368;color:#222">#A99368</div><div class="chip" style="background:#F4EFE6;color:#222">#F4EFE6</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Playfair Display'">Olive & Oak</div>
+      <div class="meta">Playfair Display · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/olive-oak-m1.png"></div><div class="cell mock"><img src="mockups/olive-oak-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Olive & Oak</span><span>13</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#6F4E3733,#0a0d15 62%)">
+  <div class="ix">Food & Beverage</div>
+  <h2>Brewing <b>Bru</b> into a daily ritual brand.</h2>
+  <div class="svc">Visual Identity · Monogram · Packaging · Cup System</div>
+  <div class="logo"><img src="logos/bru.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Bru</span><span>14</span></div>
+</section><section class="slide board">
+  <div class="label">Bru</div>
+  <div class="ind">Food & Beverage · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/bru.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#2A1A12;color:#fff">#2A1A12</div><div class="chip" style="background:#6F4E37;color:#fff">#6F4E37</div><div class="chip" style="background:#C8A07A;color:#222">#C8A07A</div><div class="chip" style="background:#F5ECE3;color:#222">#F5ECE3</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Poppins'">Bru</div>
+      <div class="meta">Poppins · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/bru-m1.png"></div><div class="cell mock"><img src="mockups/bru-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Bru</span><span>15</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#3F6B3F33,#0a0d15 62%)">
+  <div class="ix">Food & Beverage</div>
+  <h2>Rooting <b>Kanopi</b> in nature-led specialty coffee.</h2>
+  <div class="svc">Visual Identity · Wordmark · Signage · Packaging</div>
+  <div class="logo"><img src="logos/kanopi.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Kanopi</span><span>16</span></div>
+</section><section class="slide board">
+  <div class="label">Kanopi</div>
+  <div class="ind">Food & Beverage · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/kanopi.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#1E2A1E;color:#fff">#1E2A1E</div><div class="chip" style="background:#3F6B3F;color:#fff">#3F6B3F</div><div class="chip" style="background:#A8763E;color:#222">#A8763E</div><div class="chip" style="background:#F1EFE6;color:#222">#F1EFE6</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Poppins'">Kanopi</div>
+      <div class="meta">Poppins · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/kanopi-m1.png"></div><div class="cell mock"><img src="mockups/kanopi-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Kanopi</span><span>17</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#8A5A2B33,#0a0d15 62%)">
+  <div class="ix">Food & Beverage</div>
+  <h2>Shaping <b>Levain</b> into honest, handmade craft.</h2>
+  <div class="svc">Visual Identity · Logo System · Packaging · Stationery</div>
+  <div class="logo"><img src="logos/levain.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Levain</span><span>18</span></div>
+</section><section class="slide board">
+  <div class="label">Levain</div>
+  <div class="ind">Food & Beverage · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/levain.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#2B2018;color:#fff">#2B2018</div><div class="chip" style="background:#8A5A2B;color:#fff">#8A5A2B</div><div class="chip" style="background:#D8B98C;color:#222">#D8B98C</div><div class="chip" style="background:#F7F0E6;color:#222">#F7F0E6</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Playfair Display'">Levain</div>
+      <div class="meta">Playfair Display · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/levain-m1.png"></div><div class="cell mock"><img src="mockups/levain-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Levain</span><span>19</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#3FA34D33,#0a0d15 62%)">
+  <div class="ix">Food & Beverage</div>
+  <h2>Pressing <b>Verde</b> into a fresh, plant-led lifestyle.</h2>
+  <div class="svc">Visual Identity · Logo System · Bottle · Tote</div>
+  <div class="logo"><img src="logos/verde.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Verde</span><span>20</span></div>
+</section><section class="slide board">
+  <div class="label">Verde</div>
+  <div class="ind">Food & Beverage · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/verde.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#16361F;color:#fff">#16361F</div><div class="chip" style="background:#3FA34D;color:#fff">#3FA34D</div><div class="chip" style="background:#A7D96A;color:#222">#A7D96A</div><div class="chip" style="background:#F3F8EE;color:#222">#F3F8EE</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Poppins'">Verde</div>
+      <div class="meta">Poppins · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/verde-m1.png"></div><div class="cell mock"><img src="mockups/verde-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Verde</span><span>21</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#C0392B33,#0a0d15 62%)">
+  <div class="ix">Food & Beverage</div>
+  <h2>Bringing <b>Bánh &amp; Co</b> to the modern Vietnamese street.</h2>
+  <div class="svc">Visual Identity · Wordmark · Packaging · Signage</div>
+  <div class="logo"><img src="logos/banh-co.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Bánh &amp; Co</span><span>22</span></div>
+</section><section class="slide board">
+  <div class="label">Bánh &amp; Co</div>
+  <div class="ind">Food & Beverage · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/banh-co.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#1F1206;color:#fff">#1F1206</div><div class="chip" style="background:#C0392B;color:#fff">#C0392B</div><div class="chip" style="background:#E8A33D;color:#222">#E8A33D</div><div class="chip" style="background:#FBF3E7;color:#222">#FBF3E7</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Poppins'">Bánh &amp; Co</div>
+      <div class="meta">Poppins · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/banh-co-m1.png"></div><div class="cell mock"><img src="mockups/banh-co-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Bánh &amp; Co</span><span>23</span></div>
+</section><section class="slide divider" style="background:#C2410C">
+  <div class="ix">Section · 03</div>
+  <h2>Construction.<br><span class="lt">2 brand identities.</span></h2>
+  <div class="n">Selected logo systems and applications.</div>
+  <div class="foot"><span>Logofolio</span><span class="c">construction</span><span>24</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#3A3A3A33,#0a0d15 62%)">
+  <div class="ix">Construction</div>
+  <h2>Forging <b>Ironclad</b> into a mark of trust on site.</h2>
+  <div class="svc">Visual Identity · Monogram · Signage · Workwear</div>
+  <div class="logo"><img src="logos/ironclad.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Ironclad</span><span>25</span></div>
+</section><section class="slide board">
+  <div class="label">Ironclad</div>
+  <div class="ind">Construction · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/ironclad.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#141414;color:#fff">#141414</div><div class="chip" style="background:#3A3A3A;color:#fff">#3A3A3A</div><div class="chip" style="background:#C2410C;color:#222">#C2410C</div><div class="chip" style="background:#EFEFEF;color:#222">#EFEFEF</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Inter'">Ironclad</div>
+      <div class="meta">Inter · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/ironclad-m1.png"></div><div class="cell mock"><img src="mockups/ironclad-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Ironclad</span><span>26</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#2B6CB033,#0a0d15 62%)">
+  <div class="ix">Construction</div>
+  <h2>Engineering <b>BuildCore</b> for the modern build.</h2>
+  <div class="svc">Visual Identity · Logo System · Workwear · Stationery</div>
+  <div class="logo"><img src="logos/buildcore.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">BuildCore</span><span>27</span></div>
+</section><section class="slide board">
+  <div class="label">BuildCore</div>
+  <div class="ind">Construction · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/buildcore.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#15202B;color:#fff">#15202B</div><div class="chip" style="background:#2B6CB0;color:#fff">#2B6CB0</div><div class="chip" style="background:#00A699;color:#222">#00A699</div><div class="chip" style="background:#EEF2F5;color:#222">#EEF2F5</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Inter'">BuildCore</div>
+      <div class="meta">Inter · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/buildcore-m1.png"></div><div class="cell mock"><img src="mockups/buildcore-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">BuildCore</span><span>28</span></div>
+</section><section class="slide divider" style="background:#1B2A57">
+  <div class="ix">Section · 04</div>
+  <h2>Finance.<br><span class="lt">2 brand identities.</span></h2>
+  <div class="n">Selected logo systems and applications.</div>
+  <div class="foot"><span>Logofolio</span><span class="c">finance</span><span>29</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#1B2A5733,#0a0d15 62%)">
+  <div class="ix">Finance</div>
+  <h2>Positioning <b>Meridian Capital</b> with quiet authority.</h2>
+  <div class="svc">Visual Identity · Wordmark · Stationery · Collateral</div>
+  <div class="logo"><img src="logos/meridian.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Meridian Capital</span><span>30</span></div>
+</section><section class="slide board">
+  <div class="label">Meridian Capital</div>
+  <div class="ind">Finance · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/meridian.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#0F1B3D;color:#fff">#0F1B3D</div><div class="chip" style="background:#1B2A57;color:#fff">#1B2A57</div><div class="chip" style="background:#D4AF37;color:#222">#D4AF37</div><div class="chip" style="background:#F4F1E8;color:#222">#F4F1E8</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Playfair Display'">Meridian Capital</div>
+      <div class="meta">Playfair Display · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/meridian-m1.png"></div><div class="cell mock"><img src="mockups/meridian-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Meridian Capital</span><span>31</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#23232E33,#0a0d15 62%)">
+  <div class="ix">Finance</div>
+  <h2>Securing <b>Vault</b> as a modern money brand.</h2>
+  <div class="svc">Visual Identity · Logo System · Card · App</div>
+  <div class="logo"><img src="logos/vault.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Vault</span><span>32</span></div>
+</section><section class="slide board">
+  <div class="label">Vault</div>
+  <div class="ind">Finance · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/vault.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#0A0A0F;color:#fff">#0A0A0F</div><div class="chip" style="background:#23232E;color:#fff">#23232E</div><div class="chip" style="background:#6C7BFF;color:#222">#6C7BFF</div><div class="chip" style="background:#EDEDF2;color:#222">#EDEDF2</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Inter'">Vault</div>
+      <div class="meta">Inter · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/vault-m1.png"></div><div class="cell mock"><img src="mockups/vault-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Vault</span><span>33</span></div>
+</section><section class="slide divider" style="background:#1F6B4F">
+  <div class="ix">Section · 05</div>
+  <h2>Environment.<br><span class="lt">1 brand identity.</span></h2>
+  <div class="n">Selected logo systems and applications.</div>
+  <div class="foot"><span>Logofolio</span><span class="c">environment</span><span>34</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#1F6B4F33,#0a0d15 62%)">
+  <div class="ix">Environment</div>
+  <h2>Grounding <b>TerraGuard</b> in protection and purpose.</h2>
+  <div class="svc">Visual Identity · Wordmark · Report · Tote</div>
+  <div class="logo"><img src="logos/terraguard.png"></div>
+  <div class="foot"><span>Logofolio</span><span class="c">TerraGuard</span><span>35</span></div>
+</section><section class="slide board">
+  <div class="label">TerraGuard</div>
+  <div class="ind">Environment · Visual Identity</div>
+  <div class="grid">
+    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos/terraguard.png"></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#10241C;color:#fff">#10241C</div><div class="chip" style="background:#1F6B4F;color:#fff">#1F6B4F</div><div class="chip" style="background:#3FA9A0;color:#222">#3FA9A0</div><div class="chip" style="background:#EEF5F1;color:#222">#EEF5F1</div></div></div></div>
+    <div class="cell"><div class="ct">Typography</div>
+      <div class="type-wrap"><div class="big" style="font-family:'Poppins'">TerraGuard</div>
+      <div class="meta">Poppins · Display &nbsp;/&nbsp; Inter · Text</div>
+      <div class="ag" style="font-family:'Inter'">ABCDEFGHIJKLM abcdefghijklm 0123456789</div></div></div>
+    <div class="cell mock"><img src="mockups/terraguard-m1.png"></div><div class="cell mock"><img src="mockups/terraguard-m2.png"></div>
+  </div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">TerraGuard</span><span>36</span></div>
+</section><section class="slide contact-slide">
+  <h1>Let's talk.</h1>
+  <p>Modern brand identity, logo systems and visual direction for ambitious brands.</p>
+  <div class="row">
+    <div><b>Email</b>hello@logofolio.studio</div>
+    <div><b>Web</b>logofolio.studio</div>
+    <div><b>Studio</b>Available worldwide</div>
+  </div>
+  <div class="foot"><span>Logofolio</span><span class="c">thank you</span><span>37</span></div>
+</section>
+</body></html>
