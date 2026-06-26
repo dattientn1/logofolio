@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Draft Picker v2 — 6 options / brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0d0f;--card:#1c1c21;--line:#2a2a31;--text:#f4f4f5;
+    --muted:#9a9aa3;--pick:#34d399;--pickbg:rgba(52,211,153,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1340px;margin:0 auto;padding:0 24px}
+
+  header{padding:52px 0 26px;text-align:center;border-bottom:1px solid var(--line)}
+  header h1{font-size:clamp(28px,5vw,42px);font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+  header p{color:var(--muted);font-size:15px}
+
+  .bar{position:sticky;top:0;z-index:20;background:rgba(13,13,15,.93);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:13px 0}
+  .bar .inner{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between}
+  .bar .count{font-size:14.5px;font-weight:600}
+  .bar .count b{color:var(--pick)}
+  .btns{display:flex;gap:10px;flex-wrap:wrap}
+  button{font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;border:1px solid var(--line);
+    background:var(--card);color:var(--text);padding:9px 16px;border-radius:9px;transition:.2s}
+  button:hover{border-color:#3a3a44}
+  button.primary{background:var(--pick);color:#08120c;border-color:var(--pick)}
+
+  .brand{padding:30px 0;border-bottom:1px solid var(--line)}
+  .brand-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+  .brand-head h2{font-size:22px;font-weight:800;letter-spacing:-.01em}
+  .brand-head .ind{color:var(--muted);font-size:13px}
+  .brand-head .status{margin-left:auto;font-size:12.5px;color:var(--muted)}
+  .brand-head .status.done{color:var(--pick);font-weight:600}
+  .row{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  @media(max-width:1100px){.row{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:640px){.row{grid-template-columns:repeat(2,1fr);gap:10px}}
+
+  .opt{background:var(--card);border:2px solid var(--line);border-radius:12px;overflow:hidden;
+    cursor:pointer;transition:transform .2s,border-color .2s;position:relative}
+  .opt:hover{transform:translateY(-3px)}
+  .opt.sel{border-color:var(--pick);background:var(--pickbg)}
+  .opt .imgwrap{aspect-ratio:1/1;background:#16161a;overflow:hidden}
+  .opt .imgwrap img{width:100%;height:100%;object-fit:cover}
+  .opt .lab{padding:7px 10px;font-size:11.5px;color:var(--muted);text-align:center;text-transform:uppercase;letter-spacing:.06em}
+  .opt.sel .lab{color:var(--pick);font-weight:700}
+  .opt .check{position:absolute;top:9px;right:9px;width:24px;height:24px;border-radius:50%;
+    background:rgba(0,0,0,.5);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;
+    justify-content:center;font-size:13px;color:transparent;backdrop-filter:blur(4px);transition:.2s}
+  .opt.sel .check{background:var(--pick);border-color:var(--pick);color:#08120c}
+  .opt .zoom{position:absolute;top:9px;left:9px;width:24px;height:24px;border-radius:50%;
+    background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;
+    justify-content:center;font-size:12px;color:#fff;backdrop-filter:blur(4px);opacity:0;transition:.2s}
+  .opt:hover .zoom{opacity:1}
+
+  .lb{position:fixed;inset:0;background:rgba(8,8,10,.94);display:none;align-items:center;
+    justify-content:center;z-index:99;padding:40px;cursor:zoom-out;backdrop-filter:blur(6px)}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:90vh;border-radius:12px}
+
+  .panel{position:fixed;inset:0;background:rgba(8,8,10,.9);display:none;align-items:center;
+    justify-content:center;z-index:120;padding:24px;backdrop-filter:blur(6px)}
+  .panel.open{display:flex}
+  .panel .box{background:var(--card);border:1px solid var(--line);border-radius:16px;max-width:560px;width:100%;padding:28px}
+  .panel h2{font-size:22px;font-weight:800;margin-bottom:6px}
+  .panel .desc{color:var(--muted);font-size:14px;margin-bottom:18px}
+  .panel textarea{width:100%;min-height:220px;background:#101014;border:1px solid var(--line);
+    border-radius:10px;color:var(--text);font-family:ui-monospace,monospace;font-size:13px;padding:14px;resize:vertical;line-height:1.7}
+  .panel .pr{display:flex;gap:10px;margin-top:16px;justify-content:flex-end}
+
+  footer{padding:46px 0 80px;text-align:center;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Draft Picker · 6 options mỗi brand</h1>
+    <p>Mỗi brand 6 phương án đa style · click chọn 1 cái ưng / brand · click 🔍 phóng to · xong bấm "Xuất lựa chọn"</p>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="wrap inner">
+    <div class="count">Đã chốt: <b id="cnt">0</b> / <span id="total">0</span> brand</div>
+    <div class="btns">
+      <button onclick="clearAll()">Bỏ hết</button>
+      <button class="primary" onclick="exportSel()">Xuất lựa chọn</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="app"></main>
+<footer>Draft Picker v2 · Logofolio 2026 · 17 brands × 6 options</footer>
+
+<div class="lb" id="lb"><img src="" alt=""></div>
+
+<div class="panel" id="panel">
+  <div class="box">
+    <h2>Lựa chọn của a</h2>
+    <div class="desc">Copy list này gửi lại em — em đẩy sâu (case-study + mockup) đúng các bản này.</div>
+    <textarea id="out" readonly></textarea>
+    <div class="pr">
+      <button onclick="closePanel()">Đóng</button>
+      <button class="primary" onclick="copyOut()">Copy</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const STYLES=["wordmark","lockup","monogram","emblem","minimal","modern"];
+const BRANDS=[
+  {slug:"veo",n:"Veo",ind:"Eyewear · Optical clinic"},
+  {slug:"solene",n:"Solène",ind:"Eyewear · Designer sunglasses"},
+  {slug:"luma",n:"Lúma",ind:"Eyewear · Contact lens"},
+  {slug:"owlie",n:"Owlie",ind:"Eyewear · Kids"},
+  {slug:"optihaus",n:"OptiHaus",ind:"Eyewear · Retail chain"},
+  {slug:"olive-oak",n:"Olive & Oak",ind:"FnB · Upscale restaurant"},
+  {slug:"bru",n:"Bru",ind:"FnB · Specialty coffee"},
+  {slug:"kanopi",n:"Kanopi",ind:"FnB · Coffee roastery"},
+  {slug:"levain",n:"Levain",ind:"FnB · Artisan bakery"},
+  {slug:"verde",n:"Verde",ind:"FnB · Juice / plant-based"},
+  {slug:"banh-co",n:"Bánh & Co",ind:"FnB · Vietnamese fusion"},
+  {slug:"ironclad",n:"Ironclad",ind:"Construction"},
+  {slug:"buildcore",n:"BuildCore",ind:"Construction & engineering"},
+  {slug:"meridian",n:"Meridian Capital",ind:"Finance · Investment"},
+  {slug:"vault",n:"Vault",ind:"Finance · Fintech"},
+  {slug:"verdant",n:"Verdant",ind:"Environment · Nonprofit"},
+  {slug:"terraguard",n:"TerraGuard",ind:"Environment · Conservation"},
+];
+
+const app=document.getElementById('app');
+const picks={}; // slug -> style index
+document.getElementById('total').textContent=BRANDS.length;
+
+BRANDS.forEach(b=>{
+  const sec=document.createElement('section');sec.className='brand';
+  const head=document.createElement('div');head.className='brand-head';
+  head.innerHTML=`<h2>${b.n}</h2><span class="ind">${b.ind}</span><span class="status" id="st-${b.slug}">chưa chọn</span>`;
+  sec.appendChild(head);
+  const row=document.createElement('div');row.className='row';
+  for(let i=1;i<=6;i++){
+    const opt=document.createElement('div');opt.className='opt';opt.dataset.slug=b.slug;opt.dataset.i=i;
+    opt.innerHTML=`<div class="zoom">🔍</div><div class="check">✓</div>
+      <div class="imgwrap"><img src="options/${b.slug}-${i}.png" alt="${b.n} ${STYLES[i-1]}"></div>
+      <div class="lab">${STYLES[i-1]}</div>`;
+    opt.addEventListener('click',()=>{
+      const already=opt.classList.contains('sel');
+      row.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+      const st=document.getElementById('st-'+b.slug);
+      if(already){delete picks[b.slug];st.textContent='chưa chọn';st.classList.remove('done');}
+      else{opt.classList.add('sel');picks[b.slug]={name:b.n,style:STYLES[i-1],i};
+        st.textContent='✓ '+STYLES[i-1];st.classList.add('done');}
+      updateCnt();
+    });
+    opt.querySelector('.zoom').addEventListener('click',e=>{
+      e.stopPropagation();lbImg.src=opt.querySelector('img').src;lb.classList.add('open');
+    });
+    row.appendChild(opt);
+  }
+  sec.appendChild(row);app.appendChild(sec);
+});
+
+function updateCnt(){document.getElementById('cnt').textContent=Object.keys(picks).length}
+function clearAll(){document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  document.querySelectorAll('.status').forEach(s=>{s.textContent='chưa chọn';s.classList.remove('done')});
+  for(const k in picks)delete picks[k];updateCnt()}
+
+const lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+lb.addEventListener('click',()=>lb.classList.remove('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){lb.classList.remove('open');closePanel()}});
+
+const panel=document.getElementById('panel'),out=document.getElementById('out');
+function exportSel(){
+  const ks=Object.keys(picks);
+  if(ks.length===0){alert('Chưa chốt brand nào a ơi');return}
+  out.value=BRANDS.filter(b=>picks[b.slug]).map((b,idx)=>{
+    const p=picks[b.slug];return `${idx+1}. ${p.name} — option ${p.i} (${p.style})`;
+  }).join("\n");
+  panel.classList.add('open');
+}
+function closePanel(){panel.classList.remove('open')}
+function copyOut(){out.select();document.execCommand('copy');
+  const b=event.target;const t=b.textContent;b.textContent='Đã copy ✓';setTimeout(()=>b.textContent=t,1500)}
+</script>
+</body>
+</html>
