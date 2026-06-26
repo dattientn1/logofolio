@@ -172,8 +172,8 @@ def build():
     parts=[]
     # cover
     parts.append("""<section class="slide cover">
-  <div class="eyebrow">Logo Portfolio · 2026</div>
-  <div class="contact">selected works<br>15 brand identities</div>
+  <div class="eyebrow">DAT NGUYEN · 2026</div>
+  <div class="contact"></div>
   <h1>Logofolio</h1>
   <div class="sub">A curated collection of modern brand identities across eyewear, hospitality, construction, finance &amp; environment.</div>
   <div class="foot"><span>Logofolio</span><span class="c">brand identity</span><span>01</span></div>
@@ -254,9 +254,7 @@ def build():
   <h1>Let's talk.</h1>
   <p>Modern brand identity, logo systems and visual direction for ambitious brands.</p>
   <div class="row">
-    <div><b>Email</b>hello@logofolio.studio</div>
-    <div><b>Web</b>logofolio.studio</div>
-    <div><b>Studio</b>Available worldwide</div>
+    <div><b>Email</b>dattientn@gmail.com</div>
   </div>
   <div class="foot"><span>Logofolio</span><span class="c">thank you</span><span>{page:02d}</span></div>
 </section>""")
