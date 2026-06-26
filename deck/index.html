@@ -61,6 +61,21 @@ body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;color:#ff
 .divider .n{font-size:15px;color:rgba(255,255,255,.7);margin-top:18px;font-weight:300}
 
 /* contact */
+/* gallery wall */
+.gallery{padding:0;position:relative}
+.gallery .glabel{position:absolute;top:36px;left:48px;z-index:3;font-size:20px;font-weight:700;
+  color:#fff;letter-spacing:-.01em;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.gallery .glabel span{font-weight:300;color:rgba(255,255,255,.7)}
+.gallery .gwrap{position:absolute;inset:0;display:flex;gap:0}
+.gallery .gwrap.two .gcell{flex:1}
+.gallery .gwrap.one .gcell{flex:1}
+.gallery .gcell{overflow:hidden;position:relative}
+.gallery .gcell img{width:100%;height:100%;object-fit:cover}
+.gallery::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;z-index:2;
+  background:linear-gradient(to top,rgba(0,0,0,.6),transparent);pointer-events:none}
+.gallery::before{content:"";position:absolute;left:0;right:0;top:0;height:90px;z-index:2;
+  background:linear-gradient(to bottom,rgba(0,0,0,.45),transparent);pointer-events:none}
+.gallery .foot{z-index:3}
 .contact-slide{background:radial-gradient(ellipse at 30% 0%,#16243f,#0a0d15 60%);
   display:flex;flex-direction:column;justify-content:center;padding:64px}
 .contact-slide h1{font-size:120px;font-weight:800;letter-spacing:-.03em;margin-bottom:10px}
@@ -77,7 +92,7 @@ body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;color:#ff
   <div class="foot"><span>Logofolio</span><span class="c">brand identity</span><span>01</span></div>
 </section><section class="slide divider" style="background:#2B3A55">
   <div class="ix">Section · 01</div>
-  <h2>Eyewear.<br><span class="lt">4 brand identities.</span></h2>
+  <h2>Eyewear.<br><span class="lt">3 brand identities.</span></h2>
   <div class="n">Selected logo systems and applications.</div>
   <div class="foot"><span>Logofolio</span><span class="c">eyewear</span><span>02</span></div>
 </section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#CAA14440,#0a0d15 62%)">
@@ -91,255 +106,165 @@ body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;color:#ff
   <div class="ind">Eyewear · Visual Identity</div>
   <div class="grid">
     <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/solene.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
+    <div class="cell"><div class="ct">Color Palette</div>
       <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#CAA144;color:#222">#CAA144</div><div class="chip" style="background:#DABE80;color:#222">#DABE80</div><div class="chip" style="background:#EDE3CA;color:#222">#EDE3CA</div></div></div></div>
     <div class="cell mock"><img src="mockups_web/solene-m1.jpg"></div><div class="cell mock"><img src="mockups_web/solene-m2.jpg"></div>
   </div>
   <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Solène</span><span>04</span></div>
+</section><section class="slide gallery" style="background:#CAA144">
+  <div class="glabel">Solène <span>— Applications</span></div>
+  <div class="gwrap two"><div class="gcell"><img src="mockups_web/solene-m3.jpg"></div><div class="gcell"><img src="mockups_web/solene-m4.jpg"></div></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Solène</span><span>05</span></div>
 </section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#95CBEB40,#0a0d15 62%)">
   <div class="ix">Eyewear</div>
   <h2>Giving <b>Lúma</b> a soft, modern voice in vision care.</h2>
   <div class="svc">Visual Identity · Monogram · Packaging · Product</div>
   <div class="logo"><img src="logos_web/luma.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">Lúma</span><span>05</span></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Lúma</span><span>06</span></div>
 </section><section class="slide board">
   <div class="label">Lúma</div>
   <div class="ind">Eyewear · Visual Identity</div>
   <div class="grid">
     <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/luma.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
+    <div class="cell"><div class="ct">Color Palette</div>
       <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#95CBEB;color:#222">#95CBEB</div><div class="chip" style="background:#D5E7F2;color:#222">#D5E7F2</div></div></div></div>
     <div class="cell mock"><img src="mockups_web/luma-m1.jpg"></div><div class="cell mock"><img src="mockups_web/luma-m2.jpg"></div>
   </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Lúma</span><span>06</span></div>
-</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#22B49F40,#0a0d15 62%)">
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Lúma</span><span>07</span></div>
+</section><section class="slide gallery" style="background:#95CBEB">
+  <div class="glabel">Lúma <span>— Applications</span></div>
+  <div class="gwrap two"><div class="gcell"><img src="mockups_web/luma-m3.jpg"></div><div class="gcell"><img src="mockups_web/luma-m4.jpg"></div></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Lúma</span><span>08</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#3DB8A240,#0a0d15 62%)">
   <div class="ix">Eyewear</div>
   <h2>Making <b>Owlie</b> a playful friend for little eyes.</h2>
   <div class="svc">Visual Identity · Mascot Mark · Packaging · Retail</div>
   <div class="logo"><img src="logos_web/owlie.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">Owlie</span><span>07</span></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Owlie</span><span>09</span></div>
 </section><section class="slide board">
   <div class="label">Owlie</div>
   <div class="ind">Eyewear · Visual Identity</div>
   <div class="grid">
     <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/owlie.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
-      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#5EBDAF;color:#222">#5EBDAF</div><div class="chip" style="background:#22B49F;color:#222">#22B49F</div><div class="chip" style="background:#C5E6E1;color:#222">#C5E6E1</div><div class="chip" style="background:#8AD2C7;color:#222">#8AD2C7</div><div class="chip" style="background:#169580;color:#fff">#169580</div><div class="chip" style="background:#2A9F8B;color:#fff">#2A9F8B</div></div></div></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#3DB8A2;color:#222">#3DB8A2</div><div class="chip" style="background:#F0F0F2;color:#222">#F0F0F2</div></div></div></div>
     <div class="cell mock"><img src="mockups_web/owlie-m1.jpg"></div><div class="cell mock"><img src="mockups_web/owlie-m2.jpg"></div>
   </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Owlie</span><span>08</span></div>
-</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#22363640,#0a0d15 62%)">
-  <div class="ix">Eyewear</div>
-  <h2>Building <b>OptiHaus</b> into a sleek eyewear destination.</h2>
-  <div class="svc">Visual Identity · Monogram · Signage · Retail</div>
-  <div class="logo"><img src="logos_web/optihaus.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">OptiHaus</span><span>09</span></div>
-</section><section class="slide board">
-  <div class="label">OptiHaus</div>
-  <div class="ind">Eyewear · Visual Identity</div>
-  <div class="grid">
-    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/optihaus.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
-      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#223636;color:#fff">#223636</div><div class="chip" style="background:#C4D1D0;color:#222">#C4D1D0</div></div></div></div>
-    <div class="cell mock"><img src="mockups_web/optihaus-m1.jpg"></div><div class="cell mock"><img src="mockups_web/optihaus-m2.jpg"></div>
-  </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">OptiHaus</span><span>10</span></div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Owlie</span><span>10</span></div>
+</section><section class="slide gallery" style="background:#3DB8A2">
+  <div class="glabel">Owlie <span>— Applications</span></div>
+  <div class="gwrap two"><div class="gcell"><img src="mockups_web/owlie-m3.jpg"></div><div class="gcell"><img src="mockups_web/owlie-m4.jpg"></div></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Owlie</span><span>11</span></div>
 </section><section class="slide divider" style="background:#3E4A36">
   <div class="ix">Section · 02</div>
-  <h2>Food & Beverage.<br><span class="lt">6 brand identities.</span></h2>
+  <h2>Food & Beverage.<br><span class="lt">4 brand identities.</span></h2>
   <div class="n">Selected logo systems and applications.</div>
-  <div class="foot"><span>Logofolio</span><span class="c">food & beverage</span><span>11</span></div>
-</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#10121140,#0a0d15 62%)">
+  <div class="foot"><span>Logofolio</span><span class="c">food & beverage</span><span>12</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#1A1A1A40,#0a0d15 62%)">
   <div class="ix">Food & Beverage</div>
   <h2>Setting <b>Olive &amp; Oak</b> as a table worth returning to.</h2>
   <div class="svc">Visual Identity · Logo System · Menu · Stationery</div>
   <div class="logo"><img src="logos_web/olive-oak.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">Olive & Oak</span><span>12</span></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Olive & Oak</span><span>13</span></div>
 </section><section class="slide board">
   <div class="label">Olive & Oak</div>
   <div class="ind">Food & Beverage · Visual Identity</div>
   <div class="grid">
     <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/olive-oak.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
-      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#101211;color:#fff">#101211</div><div class="chip" style="background:#878888;color:#222">#878888</div><div class="chip" style="background:#515352;color:#fff">#515352</div><div class="chip" style="background:#E2E2E2;color:#222">#E2E2E2</div><div class="chip" style="background:#BBBBBB;color:#222">#BBBBBB</div><div class="chip" style="background:#3D3F3E;color:#fff">#3D3F3E</div></div></div></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#1A1A1A;color:#fff">#1A1A1A</div><div class="chip" style="background:#EFEFEF;color:#222">#EFEFEF</div></div></div></div>
     <div class="cell mock"><img src="mockups_web/olive-oak-m1.jpg"></div><div class="cell mock"><img src="mockups_web/olive-oak-m2.jpg"></div>
   </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Olive & Oak</span><span>13</span></div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Olive & Oak</span><span>14</span></div>
+</section><section class="slide gallery" style="background:#1A1A1A">
+  <div class="glabel">Olive & Oak <span>— Applications</span></div>
+  <div class="gwrap two"><div class="gcell"><img src="mockups_web/olive-oak-m3.jpg"></div><div class="gcell"><img src="mockups_web/olive-oak-m4.jpg"></div></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Olive & Oak</span><span>15</span></div>
 </section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#6C492F40,#0a0d15 62%)">
   <div class="ix">Food & Beverage</div>
   <h2>Brewing <b>Bru</b> into a daily ritual brand.</h2>
   <div class="svc">Visual Identity · Monogram · Packaging · Cup System</div>
   <div class="logo"><img src="logos_web/bru.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">Bru</span><span>14</span></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Bru</span><span>16</span></div>
 </section><section class="slide board">
   <div class="label">Bru</div>
   <div class="ind">Food & Beverage · Visual Identity</div>
   <div class="grid">
     <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/bru.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
+    <div class="cell"><div class="ct">Color Palette</div>
       <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#F3EFE5;color:#222">#F3EFE5</div><div class="chip" style="background:#6C492F;color:#fff">#6C492F</div><div class="chip" style="background:#C8BBAB;color:#222">#C8BBAB</div></div></div></div>
     <div class="cell mock"><img src="mockups_web/bru-m1.jpg"></div><div class="cell mock"><img src="mockups_web/bru-m2.jpg"></div>
   </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Bru</span><span>15</span></div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Bru</span><span>17</span></div>
+</section><section class="slide gallery" style="background:#6C492F">
+  <div class="glabel">Bru <span>— Applications</span></div>
+  <div class="gwrap two"><div class="gcell"><img src="mockups_web/bru-m3.jpg"></div><div class="gcell"><img src="mockups_web/bru-m4.jpg"></div></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Bru</span><span>18</span></div>
 </section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#7A876E40,#0a0d15 62%)">
   <div class="ix">Food & Beverage</div>
   <h2>Rooting <b>Kanopi</b> in nature-led specialty coffee.</h2>
   <div class="svc">Visual Identity · Wordmark · Signage · Packaging</div>
   <div class="logo"><img src="logos_web/kanopi.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">Kanopi</span><span>16</span></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Kanopi</span><span>19</span></div>
 </section><section class="slide board">
   <div class="label">Kanopi</div>
   <div class="ind">Food & Beverage · Visual Identity</div>
   <div class="grid">
     <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/kanopi.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
+    <div class="cell"><div class="ct">Color Palette</div>
       <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#F9F5EC;color:#222">#F9F5EC</div><div class="chip" style="background:#7A876E;color:#222">#7A876E</div></div></div></div>
     <div class="cell mock"><img src="mockups_web/kanopi-m1.jpg"></div><div class="cell mock"><img src="mockups_web/kanopi-m2.jpg"></div>
   </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Kanopi</span><span>17</span></div>
-</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#C3B3A240,#0a0d15 62%)">
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Kanopi</span><span>20</span></div>
+</section><section class="slide gallery" style="background:#7A876E">
+  <div class="glabel">Kanopi <span>— Applications</span></div>
+  <div class="gwrap two"><div class="gcell"><img src="mockups_web/kanopi-m3.jpg"></div><div class="gcell"><img src="mockups_web/kanopi-m4.jpg"></div></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Kanopi</span><span>21</span></div>
+</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#5C3A1E40,#0a0d15 62%)">
   <div class="ix">Food & Beverage</div>
   <h2>Shaping <b>Levain</b> into honest, handmade craft.</h2>
   <div class="svc">Visual Identity · Logo System · Packaging · Stationery</div>
   <div class="logo"><img src="logos_web/levain.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">Levain</span><span>18</span></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Levain</span><span>22</span></div>
 </section><section class="slide board">
   <div class="label">Levain</div>
   <div class="ind">Food & Beverage · Visual Identity</div>
   <div class="grid">
     <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/levain.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
-      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#F9F3E7;color:#222">#F9F3E7</div><div class="chip" style="background:#C3B3A2;color:#222">#C3B3A2</div></div></div></div>
+    <div class="cell"><div class="ct">Color Palette</div>
+      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#5C3A1E;color:#fff">#5C3A1E</div><div class="chip" style="background:#F5EDDF;color:#222">#F5EDDF</div></div></div></div>
     <div class="cell mock"><img src="mockups_web/levain-m1.jpg"></div><div class="cell mock"><img src="mockups_web/levain-m2.jpg"></div>
   </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Levain</span><span>19</span></div>
-</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#44B38D40,#0a0d15 62%)">
-  <div class="ix">Food & Beverage</div>
-  <h2>Pressing <b>Verde</b> into a fresh, plant-led lifestyle.</h2>
-  <div class="svc">Visual Identity · Logo System · Bottle · Tote</div>
-  <div class="logo"><img src="logos_web/verde.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">Verde</span><span>20</span></div>
-</section><section class="slide board">
-  <div class="label">Verde</div>
-  <div class="ind">Food & Beverage · Visual Identity</div>
-  <div class="grid">
-    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/verde.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
-      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#44B38D;color:#222">#44B38D</div></div></div></div>
-    <div class="cell mock"><img src="mockups_web/verde-m1.jpg"></div><div class="cell mock"><img src="mockups_web/verde-m2.jpg"></div>
-  </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Verde</span><span>21</span></div>
-</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#D16F6140,#0a0d15 62%)">
-  <div class="ix">Food & Beverage</div>
-  <h2>Bringing <b>Bánh &amp; Co</b> to the modern Vietnamese street.</h2>
-  <div class="svc">Visual Identity · Wordmark · Packaging · Signage</div>
-  <div class="logo"><img src="logos_web/banh-co.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">Bánh &amp; Co</span><span>22</span></div>
-</section><section class="slide board">
-  <div class="label">Bánh &amp; Co</div>
-  <div class="ind">Food & Beverage · Visual Identity</div>
-  <div class="grid">
-    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/banh-co.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
-      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#F6F2E9;color:#222">#F6F2E9</div><div class="chip" style="background:#D16F61;color:#222">#D16F61</div></div></div></div>
-    <div class="cell mock"><img src="mockups_web/banh-co-m1.jpg"></div><div class="cell mock"><img src="mockups_web/banh-co-m2.jpg"></div>
-  </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Bánh &amp; Co</span><span>23</span></div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Levain</span><span>23</span></div>
+</section><section class="slide gallery" style="background:#5C3A1E">
+  <div class="glabel">Levain <span>— Applications</span></div>
+  <div class="gwrap two"><div class="gcell"><img src="mockups_web/levain-m3.jpg"></div><div class="gcell"><img src="mockups_web/levain-m4.jpg"></div></div>
+  <div class="foot"><span>Logofolio</span><span class="c">Levain</span><span>24</span></div>
 </section><section class="slide divider" style="background:#C2410C">
   <div class="ix">Section · 03</div>
-  <h2>Construction.<br><span class="lt">2 brand identities.</span></h2>
+  <h2>Construction.<br><span class="lt">1 brand identity.</span></h2>
   <div class="n">Selected logo systems and applications.</div>
-  <div class="foot"><span>Logofolio</span><span class="c">construction</span><span>24</span></div>
-</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#060A0A40,#0a0d15 62%)">
-  <div class="ix">Construction</div>
-  <h2>Forging <b>Ironclad</b> into a mark of trust on site.</h2>
-  <div class="svc">Visual Identity · Monogram · Signage · Workwear</div>
-  <div class="logo"><img src="logos_web/ironclad.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">Ironclad</span><span>25</span></div>
-</section><section class="slide board">
-  <div class="label">Ironclad</div>
-  <div class="ind">Construction · Visual Identity</div>
-  <div class="grid">
-    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/ironclad.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
-      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#060A0A;color:#fff">#060A0A</div><div class="chip" style="background:#E7E7E7;color:#222">#E7E7E7</div><div class="chip" style="background:#2F3232;color:#fff">#2F3232</div><div class="chip" style="background:#D6D7D6;color:#222">#D6D7D6</div></div></div></div>
-    <div class="cell mock"><img src="mockups_web/ironclad-m1.jpg"></div><div class="cell mock"><img src="mockups_web/ironclad-m2.jpg"></div>
-  </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Ironclad</span><span>26</span></div>
+  <div class="foot"><span>Logofolio</span><span class="c">construction</span><span>25</span></div>
 </section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#FA792440,#0a0d15 62%)">
   <div class="ix">Construction</div>
   <h2>Engineering <b>BuildCore</b> for the modern build.</h2>
   <div class="svc">Visual Identity · Logo System · Workwear · Stationery</div>
   <div class="logo"><img src="logos_web/buildcore.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">BuildCore</span><span>27</span></div>
+  <div class="foot"><span>Logofolio</span><span class="c">BuildCore</span><span>26</span></div>
 </section><section class="slide board">
   <div class="label">BuildCore</div>
   <div class="ind">Construction · Visual Identity</div>
   <div class="grid">
     <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/buildcore.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
+    <div class="cell"><div class="ct">Color Palette</div>
       <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#EBEBEB;color:#222">#EBEBEB</div><div class="chip" style="background:#FA7924;color:#222">#FA7924</div><div class="chip" style="background:#201E1E;color:#fff">#201E1E</div><div class="chip" style="background:#D5AB8F;color:#222">#D5AB8F</div><div class="chip" style="background:#D16F2F;color:#222">#D16F2F</div></div></div></div>
     <div class="cell mock"><img src="mockups_web/buildcore-m1.jpg"></div><div class="cell mock"><img src="mockups_web/buildcore-m2.jpg"></div>
   </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">BuildCore</span><span>28</span></div>
-</section><section class="slide divider" style="background:#1B2A57">
-  <div class="ix">Section · 04</div>
-  <h2>Finance.<br><span class="lt">2 brand identities.</span></h2>
-  <div class="n">Selected logo systems and applications.</div>
-  <div class="foot"><span>Logofolio</span><span class="c">finance</span><span>29</span></div>
-</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#11284140,#0a0d15 62%)">
-  <div class="ix">Finance</div>
-  <h2>Positioning <b>Meridian Capital</b> with quiet authority.</h2>
-  <div class="svc">Visual Identity · Wordmark · Stationery · Collateral</div>
-  <div class="logo"><img src="logos_web/meridian.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">Meridian Capital</span><span>30</span></div>
-</section><section class="slide board">
-  <div class="label">Meridian Capital</div>
-  <div class="ind">Finance · Visual Identity</div>
-  <div class="grid">
-    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/meridian.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
-      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#112841;color:#fff">#112841</div><div class="chip" style="background:#ACB2B6;color:#222">#ACB2B6</div></div></div></div>
-    <div class="cell mock"><img src="mockups_web/meridian-m1.jpg"></div><div class="cell mock"><img src="mockups_web/meridian-m2.jpg"></div>
-  </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Meridian Capital</span><span>31</span></div>
-</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#92939740,#0a0d15 62%)">
-  <div class="ix">Finance</div>
-  <h2>Securing <b>Vault</b> as a modern money brand.</h2>
-  <div class="svc">Visual Identity · Logo System · Card · App</div>
-  <div class="logo"><img src="logos_web/vault.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">Vault</span><span>32</span></div>
-</section><section class="slide board">
-  <div class="label">Vault</div>
-  <div class="ind">Finance · Visual Identity</div>
-  <div class="grid">
-    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/vault.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
-      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#929397;color:#222">#929397</div></div></div></div>
-    <div class="cell mock"><img src="mockups_web/vault-m1.jpg"></div><div class="cell mock"><img src="mockups_web/vault-m2.jpg"></div>
-  </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">Vault</span><span>33</span></div>
-</section><section class="slide divider" style="background:#1F6B4F">
-  <div class="ix">Section · 05</div>
-  <h2>Environment.<br><span class="lt">1 brand identity.</span></h2>
-  <div class="n">Selected logo systems and applications.</div>
-  <div class="foot"><span>Logofolio</span><span class="c">environment</span><span>34</span></div>
-</section><section class="slide tcard" style="background:radial-gradient(ellipse at 75% 15%,#1A525C40,#0a0d15 62%)">
-  <div class="ix">Environment</div>
-  <h2>Grounding <b>TerraGuard</b> in protection and purpose.</h2>
-  <div class="svc">Visual Identity · Wordmark · Report · Tote</div>
-  <div class="logo"><img src="logos_web/terraguard.jpg"></div>
-  <div class="foot"><span>Logofolio</span><span class="c">TerraGuard</span><span>35</span></div>
-</section><section class="slide board">
-  <div class="label">TerraGuard</div>
-  <div class="ind">Environment · Visual Identity</div>
-  <div class="grid">
-    <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="logos_web/terraguard.jpg"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
-      <div class="pal-wrap"><div class="pal-row"><div class="chip" style="background:#4D775E;color:#fff">#4D775E</div><div class="chip" style="background:#1A525C;color:#fff">#1A525C</div><div class="chip" style="background:#B6C6BC;color:#222">#B6C6BC</div></div></div></div>
-    <div class="cell mock"><img src="mockups_web/terraguard-m1.jpg"></div><div class="cell mock"><img src="mockups_web/terraguard-m2.jpg"></div>
-  </div>
-  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">TerraGuard</span><span>36</span></div>
+  <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">BuildCore</span><span>27</span></div>
+</section><section class="slide gallery" style="background:#201E1E">
+  <div class="glabel">BuildCore <span>— Applications</span></div>
+  <div class="gwrap two"><div class="gcell"><img src="mockups_web/buildcore-m3.jpg"></div><div class="gcell"><img src="mockups_web/buildcore-m4.jpg"></div></div>
+  <div class="foot"><span>Logofolio</span><span class="c">BuildCore</span><span>28</span></div>
 </section><section class="slide contact-slide">
   <h1>Let's talk.</h1>
   <p>Modern brand identity, logo systems and visual direction for ambitious brands.</p>
@@ -348,6 +273,6 @@ body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;color:#ff
     <div><b>Web</b>logofolio.studio</div>
     <div><b>Studio</b>Available worldwide</div>
   </div>
-  <div class="foot"><span>Logofolio</span><span class="c">thank you</span><span>37</span></div>
+  <div class="foot"><span>Logofolio</span><span class="c">thank you</span><span>29</span></div>
 </section>
 </body></html>

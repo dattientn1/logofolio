@@ -55,13 +55,17 @@ BRANDS = [
   ["#10241C","#1F6B4F","#3FA9A0","#EEF5F1"],("Poppins","Inter"),"Environment"),
 ]
 
+# keep only the 8 brands the client chose
+KEEP={"solene","luma","owlie","olive-oak","bru","kanopi","levain","buildcore"}
+BRANDS=[b for b in BRANDS if b[0] in KEEP]
+
 GROUPS = ["Eyewear","Food & Beverage","Construction","Finance","Environment"]
 GROUP_COLOR = {"Eyewear":"#2B3A55","Food & Beverage":"#3E4A36","Construction":"#C2410C",
                "Finance":"#1B2A57","Environment":"#1F6B4F"}
 
 def mockups(slug):
     out=[]
-    for i in (1,2):
+    for i in (1,2,3,4):
         if os.path.exists(f"/home/apple/Apple/portfolio/deck/mockups_web/{slug}-m{i}.jpg"):
             out.append(f"mockups_web/{slug}-m{i}.jpg")
     return out
@@ -133,6 +137,21 @@ body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;color:#ff
 .divider .n{font-size:15px;color:rgba(255,255,255,.7);margin-top:18px;font-weight:300}
 
 /* contact */
+/* gallery wall */
+.gallery{padding:0;position:relative}
+.gallery .glabel{position:absolute;top:36px;left:48px;z-index:3;font-size:20px;font-weight:700;
+  color:#fff;letter-spacing:-.01em;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.gallery .glabel span{font-weight:300;color:rgba(255,255,255,.7)}
+.gallery .gwrap{position:absolute;inset:0;display:flex;gap:0}
+.gallery .gwrap.two .gcell{flex:1}
+.gallery .gwrap.one .gcell{flex:1}
+.gallery .gcell{overflow:hidden;position:relative}
+.gallery .gcell img{width:100%;height:100%;object-fit:cover}
+.gallery::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;z-index:2;
+  background:linear-gradient(to top,rgba(0,0,0,.6),transparent);pointer-events:none}
+.gallery::before{content:"";position:absolute;left:0;right:0;top:0;height:90px;z-index:2;
+  background:linear-gradient(to bottom,rgba(0,0,0,.45),transparent);pointer-events:none}
+.gallery .foot{z-index:3}
 .contact-slide{background:radial-gradient(ellipse at 30% 0%,#16243f,#0a0d15 60%);
   display:flex;flex-direction:column;justify-content:center;padding:64px}
 .contact-slide h1{font-size:120px;font-weight:800;letter-spacing:-.03em;margin-bottom:10px}
@@ -209,13 +228,26 @@ def build():
   <div class="ind">{grp} · Visual Identity</div>
   <div class="grid">
     <div class="cell logo-cell"><div class="ct" style="position:absolute;top:0;left:0">Logo</div><img src="{logo}"></div>
-    <div class="cell"><div class="ct">Color Palette · from logo</div>
+    <div class="cell"><div class="ct">Color Palette</div>
       <div class="pal-wrap"><div class="pal-row">{chips}</div></div></div>
     {mock_cells}
   </div>
   <div class="foot" style="color:rgba(0,0,0,.55)"><span>Logofolio</span><span class="c">{name}</span><span>{page:02d}</span></div>
 </section>""")
             page+=1
+            # gallery wall slide (mockups 3 & 4) — Daymark-style full-bleed showcase
+            gal=mks[2:4]
+            if gal:
+                if len(gal)>1:
+                    gcontent=f'<div class="gwrap two"><div class="gcell"><img src="{gal[0]}"></div><div class="gcell"><img src="{gal[1]}"></div></div>'
+                else:
+                    gcontent=f'<div class="gwrap one"><div class="gcell"><img src="{gal[0]}"></div></div>'
+                parts.append(f"""<section class="slide gallery" style="background:{darkest}">
+  <div class="glabel">{name} <span>— Applications</span></div>
+  {gcontent}
+  <div class="foot"><span>Logofolio</span><span class="c">{name}</span><span>{page:02d}</span></div>
+</section>""")
+                page+=1
 
     # contact
     parts.append(f"""<section class="slide contact-slide">
